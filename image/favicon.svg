@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="中国历代朝代与君主在位时间轴">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8edf5"/>
+      <stop offset="1" stop-color="#cfd9e8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#bg)"/>
+  <line x1="18" y1="16" x2="18" y2="48" stroke="#657489" stroke-width="2"/>
+  <line x1="18" y1="22" x2="24" y2="22" stroke="#657489" stroke-width="2"/>
+  <line x1="18" y1="32" x2="26" y2="32" stroke="#657489" stroke-width="2"/>
+  <line x1="18" y1="42" x2="22" y2="42" stroke="#657489" stroke-width="2"/>
+  <rect x="26" y="18" width="28" height="8" rx="4" fill="#cc8a92"/>
+  <rect x="26" y="28" width="20" height="8" rx="4" fill="#78bfa1"/>
+  <rect x="26" y="38" width="24" height="8" rx="4" fill="#7f93c4"/>
+</svg>

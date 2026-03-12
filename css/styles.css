@@ -1,0 +1,414 @@
+/* 样式表 */
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 30px 20px 60px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.timeline-note {
+  margin: 10px 4px 0;
+  font-size: 12px;
+  color: #7f8897;
+  line-height: 1.4;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 30px;
+  letter-spacing: 4px;
+}
+
+/* ── Timeline wrapper ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  --axis-line-x: 102px;
+  --metric-width: 56px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  padding-bottom: 22px;
+  overflow: hidden;
+}
+
+.y-ruler {
+  position: absolute;
+  left: var(--axis-line-x);
+  right: auto;
+  width: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.y-ruler-line {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #9ea8b5;
+}
+
+.y-tick {
+  position: absolute;
+  right: 0;
+  height: 1px;
+  background: #b9c1cb;
+}
+
+.y-tick.minor {
+  width: 4px;
+  background: #c3cad3;
+}
+
+.y-tick.medium {
+  width: 8px;
+  background: #8e98a6;
+}
+
+.y-tick.major {
+  width: 13px;
+  background: #111111;
+}
+
+/* ── Column widths (shared by header + all rows) ── */
+.col-time {
+  width: 90px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 18px;
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.col-label {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 0 10px 0 20px;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.col-bar {
+  flex: 1;
+  padding: 0 30px 0 8px;
+  position: relative;
+}
+
+.axis-col-header {
+  padding-left: 8px;
+  padding-right: 30px;
+}
+
+/* ── Header row ── */
+.timeline-header {
+  display: flex;
+  align-items: flex-end;
+  background: #f8f9fb;
+  border-bottom: 2px solid #e0e4ea;
+  padding: 10px 0 6px;
+}
+
+.col-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.global-toggle-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.global-toggle-label:hover {
+  color: #58667a;
+}
+
+/* Tick mark ruler in header bar column */
+.tick-wrap {
+  position: relative;
+  height: 34px;
+  width: 100%;
+  overflow: visible;
+}
+
+.tick-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #888;
+  top: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+}
+
+.tick-label::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 10px;
+  background: #9ea6b0;
+  margin-top: 3px;
+}
+
+.tick-label.terminal-tick {
+  font-weight: 700;
+  color: #4d5564;
+}
+
+.tick-label.terminal-tick::after {
+  width: 2px;
+  height: 14px;
+  background: #6a7586;
+}
+
+.tick-minor {
+  position: absolute;
+  transform: translateX(-50%);
+  top: 20px;
+  width: 1px;
+  height: 4px;
+  background: #c7cdd4;
+}
+
+/* ── Rows ── */
+.row {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  transition: background 0.15s;
+}
+
+.row .col-label,
+.row .col-bar {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: transparent;
+}
+
+.dynasty-row {
+  min-height: 48px;
+  background: transparent;
+}
+
+.dynasty-row .col-label,
+.dynasty-row .col-bar {
+  border-bottom: none;
+}
+
+.dynasty-row:hover {
+  background: transparent;
+}
+
+.subdynasty-row .col-time {
+  color: #7f8897;
+}
+
+.subdynasty-label {
+  padding-left: 34px;
+}
+
+.subdynasty-row .dynasty-name-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3b4f;
+}
+
+.emperor-row .col-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.emperor-row .col-label {
+  padding-left: 34px;
+  font-size: 13px;
+  color: #555;
+}
+
+.marker-row {
+  min-height: 36px;
+}
+
+.marker-row .col-time,
+.marker-row .marker-label {
+  color: #6b7380;
+  font-weight: 500;
+}
+
+.marker-row .col-time {
+  font-size: 13px;
+}
+
+.bar-cell-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.bar-track-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.bar-value {
+  position: absolute;
+  top: 50%;
+  transform: translate(6px, -50%);
+  font-size: 12px;
+  color: #5f6877;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bar-value.inside {
+  transform: translate(calc(-100% - 6px), -50%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Labels ── */
+.dynasty-name-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 2px;
+}
+
+.emperor-label {
+  letter-spacing: 0.5px;
+}
+
+/* ── Toggle button ── */
+.toggle-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #888;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.toggle-btn:hover {
+  background: #e0e4ea;
+  color: #333;
+}
+
+/* ── Bar track (the grey rail) ── */
+.bar-track {
+  position: relative;
+  height: 20px;
+  background: #eef0f4;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dynasty-row .bar-track {
+  height: 22px;
+}
+
+/* ── Bars ── */
+.bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 10px;
+  transition: filter 0.15s;
+}
+
+.bar:hover {
+  filter: brightness(1.12);
+  cursor: pointer;
+}
+
+.dynasty-bar {
+  opacity: 0.85;
+}
+
+.emperor-bar {
+  opacity: 0.72;
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  background: rgba(20, 20, 40, 0.92);
+  color: #f0f2f5;
+  padding: 12px 14px;
+  border-radius: 8px;
+  max-width: 300px;
+  font-size: 13px;
+  line-height: 1.5;
+  display: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.tooltip p {
+  margin: 4px 0;
+}
+
+.tooltip ul {
+  padding-left: 16px;
+  margin: 4px 0 0;
+}
+
+.tooltip li {
+  margin-bottom: 2px;
+}
+
+/* ── Color palette ── */
+.green    { background: #52a447; }
+.orange   { background: #d67c2a; }
+.purple   { background: #7b52c2; }
+.blue     { background: #3574d4; }
+.teal     { background: #2a9d8f; }
+.yellow   { background: #c89a00; }
+.red      { background: #c0392b; }
+.gray     { background: #5a6268; }
+.darkblue { background: #234b8a; }

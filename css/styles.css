@@ -18,6 +18,15 @@ body {
   line-height: 1.4;
 }
 
+.timeline-note a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.timeline-note a:visited {
+  color: inherit;
+}
+
 h1 {
   text-align: center;
   font-size: 32px;

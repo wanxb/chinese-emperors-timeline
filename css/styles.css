@@ -9,6 +9,7 @@ body {
 .container {
   max-width: 1100px;
   margin: auto;
+  position: relative;
 }
 
 .timeline-note {
@@ -25,6 +26,48 @@ body {
 
 .timeline-note a:visited {
   color: inherit;
+}
+
+.repo-note {
+  position: absolute;
+  right: 8px;
+  bottom: -4px;
+  margin: 0;
+  z-index: 30;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #5f6877;
+  text-decoration: none;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.repo-link:visited {
+  color: inherit;
+}
+
+.repo-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.repo-link:hover {
+  transform: translateY(-1px);
+  color: #2e3746;
+}
+
+@media (max-width: 640px) {
+  .repo-note {
+    right: 6px;
+    bottom: -2px;
+  }
 }
 
 h1 {

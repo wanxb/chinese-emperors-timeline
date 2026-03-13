@@ -1138,18 +1138,6 @@ window.timelineDataSource = {
           "end": -256,
           "bio": "",
           "events": []
-        },
-        {
-          "type": "emperor",
-          "title": "？",
-          "templeTitle": "",
-          "posthumous": "",
-          "name": "",
-          "era": "",
-          "start": -256,
-          "end": -249,
-          "bio": "",
-          "events": []
         }
       ]
     },

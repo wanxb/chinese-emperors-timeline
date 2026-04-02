@@ -416,9 +416,30 @@ function createTimeline() {
 
   const labelColHeader = document.createElement('div');
   labelColHeader.className = 'col-label col-header global-toggle-label';
-  labelColHeader.textContent = '朝代 / 君王';
-  labelColHeader.title = '点击展开/收起所有根节点';
+  labelColHeader.setAttribute('role', 'button');
+  labelColHeader.setAttribute('tabindex', '0');
+  labelColHeader.setAttribute('aria-label', '点击展开或收起所有朝代与君王节点');
+  labelColHeader.title = '点击展开/收起所有节点';
+
+  const labelHeaderText = document.createElement('span');
+  labelHeaderText.className = 'global-toggle-text';
+  labelHeaderText.textContent = '朝代 / 君王';
+
+  const labelHeaderHint = document.createElement('span');
+  labelHeaderHint.className = 'global-toggle-hint';
+  labelHeaderHint.textContent = '↕';
+  labelHeaderHint.setAttribute('aria-hidden', 'true');
+
+  labelColHeader.appendChild(labelHeaderText);
+  labelColHeader.appendChild(labelHeaderHint);
+
   labelColHeader.addEventListener('click', () => toggleAllRootNodes(container));
+  labelColHeader.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleAllRootNodes(container);
+    }
+  });
   header.appendChild(labelColHeader);
 
   const barColHeader = document.createElement('div');
